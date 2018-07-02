@@ -34,11 +34,15 @@ export default class Account extends Component {
       console.log("Not a number");
     }
     else {
-      let amount = this.refs.amount.value;
+      let amount = +this.refs.amount.value;
+      if (amount <= this.state.balance){
       let newBalance = this.state.balance - amount
       this.setState({
         balance: newBalance
-      })
+      })}
+      else {
+        console.log("Nice try! You can't withdraw more $ than you have!");
+      }
       this.refs.amount.value = ''
     }
   }
